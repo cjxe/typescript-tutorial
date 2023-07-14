@@ -548,3 +548,58 @@ console.log(docOne.name);
 
 // ✅
 ```
+
+## Lesson 19
+When you keep a track of descriptive constant (i.e., Suits: clubs, diamonds, hearts, spades) using numeric numbers (i.e., we say clubs are 0, diamonds are 1 ...) that are in a group (i.e., suits), you can introduce `enum` to keep track of numeric value using descriptions
+```js
+interface Resource<T> {
+  uid: number,
+  resourceType: ResourceType;
+  data: T;
+}
+
+const docOne: Resource<object> = {
+  uid: 1,
+  resourceType: 3, // 3 = BOOK
+  data: { title: 'name of the wind' }
+}
+
+const docTwo: Resource<object> = {
+  uid: 10,
+  resourceType: 4, // 4 = PERSON
+  data: { name: 'yoshi' }
+}
+
+// ❌ It gets confusing very fast since you have to associate the number of `resourceType` to the value in your head
+``` 
+```js
+enum ResourceType {
+  BOOK,
+  AUTHOR,
+  FILM,
+  DIRECTOR,
+  PERSON
+}
+
+interface Resource<T> {
+  uid: number,
+  resourceType: ResourceType;
+  data: T;
+}
+
+const docOne: Resource<object> = {
+  uid: 1,
+  resourceType: ResourceType.BOOK,
+  data: { title: 'name of the wind' }
+}
+
+const docTwo: Resource<object> = {
+  uid: 10,
+  resourceType: ResourceType.PERSON,
+  data: { name: 'yoshi' }
+}
+
+// ✅
+```
+
+🚨 enum properties are numbers (in the example above `ResourceType.BOOK` logs `0` to the console)
