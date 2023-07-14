@@ -499,3 +499,52 @@ Classes `implement` interfaces. Classes `extend` classes. Interfaces extend inte
 ## Lesson 17
 code to render the HTML page
 
+## Lesson 18
+Generics enable types (classes, types, or interfaces) to act as parameters. It helps us reuse the same code for different types of input since the type itself is available as a parameter.
+```js
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+let output = identity<string>("myString");
+```
+
+Generics are used when you want declare multiple different variables using the same type for most properties and change the type of >=1 property while initialising it 
+```js
+const addUID = (obj: object) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+let docOne = addUID({name: 'yoshi', age: 40});
+
+console.log(docOne.name);
+
+// ❌ error TS2339: Property 'name' does not exist on type '{ uid: number; }'.
+```
+```ts
+const addUID = <T>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+let docOne = addUID({name: 'yoshi', age: 40});
+let docTwo = addUID('hello'); // but the problem is T is too general now
+
+console.log(docOne.name);
+
+// ✅
+```
+```ts
+const addUID = <T extends {name: string}>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+let docOne = addUID({name: 'yoshi'});
+let docTwo = addUID({name: 'yoshi', age: 40});
+
+console.log(docOne.name);
+
+// ✅
+```
