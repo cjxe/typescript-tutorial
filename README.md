@@ -88,3 +88,36 @@ ninja = {
 
 // ❌ error TS2741: Property 'age' is missing in type '{ name: string; belt: string; }' but required in type '{ name: string; belt: string; age: number; }'.
 ```
+
+## Lesson 5
+You can define types of variables without assigning a value:
+```js
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
+let ninjas: string[];
+let mixed: (string|number|boolean)[];
+let ninjaOne: object;
+let ninjaTwo: {
+  name: string,
+  age: number,
+  beltColour: string
+};
+
+// ✅
+```
+💡 when you initialise a variable with an array of some type(s), set the value to `[]` so you can use the `.push` method in the future
+```js
+let ninjas: string[] = [];
+ninjas.push('shaun');
+
+// ✅
+```
+```js
+let mixed: (string|number|boolean)[] = [];
+mixed.push('hello');
+mixed.push(20);
+mixed.push(false);
+
+// ✅
+```
