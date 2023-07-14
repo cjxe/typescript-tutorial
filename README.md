@@ -432,4 +432,38 @@ The app is requesting multiple js files
 ![multiple file requests](/docs/multiple-js-requests.png)
 this is a problem in bigger apps since multiple requests use too many server resources and thats why you would like to avoid it if possible. This can be solved by bundling the app to a single js file using **webpack**
 
-s
+## Lesson 15
+A new type declaration other than `type` is `interface`. They are very similar to types. The main difference is `interface` is mutable (i.e., can be extended) and `type` is immutable. Some examples below that the type declaration `interface` supports but `type` doesn't:
+```js
+interface BaseInterface {
+  // Properties and methods
+}
+
+interface ExtendedInterface extends BaseInterface {
+  // Additional properties and methods
+}
+```
+```js
+type BaseType = {
+  // Properties and methods
+};
+
+type ExtendedType = BaseType & {
+  // Additional properties and methods
+};
+
+```
+```js
+interface MyInterface {
+  prop1: string;
+}
+
+interface MyInterface {
+  prop2: number;
+}
+
+const obj: MyInterface = {
+  prop1: "Hello",
+  prop2: 42,
+};
+```
