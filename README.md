@@ -413,3 +413,23 @@ class Employee {
     }
 }
 ```
+
+## Lesson 14
+🚨 When importing modules (i.e., functions from other files) import the `.js` file
+```js
+import { Invoice } from './classes/Invoice';
+
+// ❌
+```
+```js
+import { Invoice } from './classes/Invoice.js';
+
+// ✅
+```
+
+### Misc problem
+The app is requesting multiple js files
+![multiple file requests](/docs/multiple-js-requests.png)
+this is a problem in bigger apps since multiple requests use too many server resources and thats why you would like to avoid it if possible. This can be solved by bundling the app to a single js file using **webpack**
+
+s
