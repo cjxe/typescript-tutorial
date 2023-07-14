@@ -603,3 +603,27 @@ const docTwo: Resource<object> = {
 ```
 
 🚨 enum properties are numbers (in the example above `ResourceType.BOOK` logs `0` to the console)
+
+## Lesson 20
+The types of data in each position in a tuple is fixed once its been initialised
+```js
+// remember, if some type was initialised in an array, that type could have been used in any position in that array
+let arr = ['ryu', 24, true];
+arr[0] = false;
+arr[1] = 'yoshi';
+
+// ✅
+```
+```js
+// the above is not the case with tuples 
+let tup: [string, number, boolean] = ['ryu', 25, true];
+tup[0] = 25
+
+// ❌ error TS2322: Type 'number' is not assignable to type 'string'.
+```
+```js
+let tup: [string, number, boolean] = ['ryu', 25, true];
+tup[0] = 'ken'
+
+// ✅
+```
