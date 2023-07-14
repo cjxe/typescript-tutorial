@@ -121,3 +121,6 @@ mixed.push(false);
 
 // ✅
 ```
+
+## Lesson 6
+Type type `any` exists. Avoid using it since it mainly defeats the purpose of using types.
