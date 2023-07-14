@@ -259,3 +259,41 @@ const type = document.querySelector('#type') as HTMLSelectElement;
 const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
 // ✅
 ```
+
+## Lesson 12
+🚨 When initialising a class in TS, you have to set a value to the introduced properties (e.g., next to them, in the constructor)
+```js
+class Invoice { 
+  client: string;
+  details: string;
+  amount: number;
+};
+
+// ❌ properties are not set 
+```
+```js
+// classes
+class Invoice { 
+  client: string = '';
+  details: string = '';
+  amount: number = 5;
+};
+
+// ✅
+```
+```js
+// classes
+class Invoice { 
+  client: string;
+  details: string;
+  amount: number;
+
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
+};
+
+// ✅
+```
