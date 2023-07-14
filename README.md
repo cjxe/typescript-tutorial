@@ -124,3 +124,23 @@ mixed.push(false);
 
 ## Lesson 6
 Type type `any` exists. Avoid using it since it mainly defeats the purpose of using types.
+
+## Lesson 7
+In a typical project, we have 2 main folders:
+```
+├── public
+│   ├── index.html
+│   ├── sandbox.js
+│   └── styles.css
+└── src
+    └── sandbox.ts
+```
+1- `/public` gets deployed onto the main server 
+
+2- we may have multiple fines in `/src`. Ideally, we would like to compile all `.ts` files easily
+
+Solution: initialise a `tsconfig.json` file, configure it, and run it
+```
+tsc --init
+tsc -w
+```
