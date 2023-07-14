@@ -493,3 +493,9 @@ The **new class is a child**. It gets benefits coming with inheritance. It has a
 
 `implements` means:
 The **new class** can be treated as **the same "shape"**, but **it is not a child**. It could be passed to any method where Person is required, regardless of having a different parent than Person.
+-
+Classes `implement` interfaces. Classes `extend` classes. Interfaces extend interfaces.
+
+## Lesson 17
+code to render the HTML page
+
