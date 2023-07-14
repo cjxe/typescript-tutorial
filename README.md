@@ -467,3 +467,29 @@ const obj: MyInterface = {
   prop2: 42,
 };
 ```
+
+## Lesson 16
+You can use the `implements` keyword to indicate the a class implements a given interface
+```js
+export interface HasFormatter {
+  format(): string;
+}
+
+export class Payment implements HasFormatter { 
+  constructor(
+    readonly recipient: string,
+    private details: string,
+    public amount: number,
+  ){}
+
+  format() {
+    return `${this.recipient} is owed £${this.amount} for ${this.details}`;
+  }
+};
+```
+
+`extends` means:
+The **new class is a child**. It gets benefits coming with inheritance. It has all the properties and methods of its parent. It can override some of these and implement new ones, but the parent stuff is already included.
+
+`implements` means:
+The **new class** can be treated as **the same "shape"**, but **it is not a child**. It could be passed to any method where Person is required, regardless of having a different parent than Person.
