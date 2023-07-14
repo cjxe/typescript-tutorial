@@ -126,7 +126,7 @@ mixed.push(false);
 Type type `any` exists. Avoid using it since it mainly defeats the purpose of using types.
 
 ## Lesson 7
-In a typical project, we have 2 main folders:
+In a typical project, you have 2 main folders:
 ```
 ├── public
 │   ├── index.html
@@ -137,10 +137,56 @@ In a typical project, we have 2 main folders:
 ```
 1- `/public` gets deployed onto the main server 
 
-2- we may have multiple fines in `/src`. Ideally, we would like to compile all `.ts` files easily
+2- you may have multiple fines in `/src`. Ideally, you would like to compile all `.ts` files easily
 
 Solution: initialise a `tsconfig.json` file, configure it, and run it
 ```
 tsc --init
 tsc -w
+```
+
+## Lesson 8
+The type `Function` exist
+```js
+let add: Function;
+
+const add = (a: number, b: number) => {
+  console.log(a + b)
+}
+
+add(5, 10);
+
+// ✅
+```
+you can declare "optional" parameters by adding `?` after the parameter
+```js
+const add = (a: number, b: number, c?: number) => {
+  console.log(a + b)
+}
+
+add(5, 10);
+add(5, 10, 30);
+
+// ✅
+```
+you can set default values to parameters
+
+💡 set your required parameters first, and optional/default parameters last
+```js
+const add = (a: number, b: number, c?: number|string = 10) => {
+  console.log(a + b)
+  console.log(c)
+}
+
+// ✅
+```
+TS infers the return type of the function, but you can manually set it too
+```js
+const add = (a: number, b: number, c?: number|string): number => {
+  return a + b
+}
+
+let result = add(5, 10); // the type of `result` is `number`
+
+// ✅
 ```
