@@ -1,4 +1,21 @@
 "use strict";
-const greet = (user) => {
-    console.log(`${user.name} says hello`);
+// example 1
+let greet; // signature. `a` and `b` means the function `greet` will have 2 parameters in the future
+greet = (name, greeting) => {
+    console.log(`${name} says ${greeting}`);
+};
+// example 2
+let calc;
+calc = (numOne, numTwo, action) => {
+    if (action === 'add') {
+        return numOne + numTwo;
+    }
+    else {
+        return numOne - numTwo;
+    }
+};
+// example 3
+let logDetails;
+logDetails = (ninja) => {
+    console.log(`${ninja.name} is ${ninja.age} years old`);
 };

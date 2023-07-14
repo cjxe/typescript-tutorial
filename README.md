@@ -222,4 +222,17 @@ const leave = (user: objWithName) => {
 // ✅
 ```
 
+## Lesson 10
+it is possible to decalre functions parameter, its types and its return value without defining the body of the function. These declarations are called "function signatures"
+
+they are useful when working with interfaces, documenting and working with an IDE
+```js
+let greet: (a: string, b:string) => void; // signature. `a` and `b` means the function `greet` will have 2 parameters in the future
+
+greet = (name: string, greeting: string) => {
+  console.log(`${name} says ${greeting}`);
+}
+
+// ✅
+```
 
