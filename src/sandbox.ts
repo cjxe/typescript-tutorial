@@ -1,9 +1,6 @@
-let greet: Function;
+type StringOrNum = string | number;
+type objWithName = { name: string, uid: StringOrNum};
 
-const add = (a: number, b: number, c?: number|string) => {
-  console.log(a + b)
+const greet = (user: {name: string, uid: StringOrNum}) => {
+  console.log(`${user.name} says hello`);
 }
-
-
-let result = add(5, 10);
-console.log(result)

@@ -190,3 +190,36 @@ let result = add(5, 10); // the type of `result` is `number`
 
 // ✅
 ```
+
+## Lesson 9
+if you happen to work with long or repeating types, you can define "type aliases"
+
+```js
+type StringOrNum = string | number;
+
+const greet = (user: {name: string, uid: StringOrNum}) => {
+  console.log(`${user.name} says hello`);
+}
+
+const leave = (user: {name: string, uid: StringOrNum}) => {
+  console.log(`${user.name} has left`);
+}
+
+// ✅
+```
+```js
+type StringOrNum = string | number;
+type objWithName = { name: string, uid: StringOrNum};
+
+const greet = (user: objWithName) => {
+  console.log(`${user.name} says hello`);
+}
+
+const leave = (user: objWithName) => {
+  console.log(`${user.name} has left`);
+}
+
+// ✅
+```
+
+
