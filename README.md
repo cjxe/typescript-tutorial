@@ -297,3 +297,119 @@ class Invoice {
 
 // ✅
 ```
+
+## Lesson 13
+you can change how the properties inside the classes can be accessed or modified by using the "access modifiers"
+```js
+class Invoice { 
+  private client: string;
+  private details: string;
+  readonly amount: number;
+
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
+};
+
+const invoiceOne = new Invoice('mario', 'work on the mario youbsite', 250);
+console.log(invoiceOne.client)
+
+// ❌ error TS2341: Property 'client' is private and only accessible within class 'Invoice'.
+```
+💡 if you use access modifiers before the properties, you can directly define the class properties inside the constructor
+```js
+class Invoice { 
+  constructor(
+    readonly client: string,
+    private details: string,
+    public amount: number,
+  ){}
+
+  format() {
+    return `${this.client} owes £${this.amount} for ${this.details}`;
+  }
+};
+```
+### Access modifiers
+- **public** *(default behaviour)*: property can be accessed within the class and outside of the class
+- **private**: property can be accessed within the class, but not outside of the class
+- **readonly**: property can be accessed with the class and outside of the class BUT can't be changed (both inside the class and outside the class)
+- **protected**: Similar to the private access modifier, except that protected properties can be accessed using their deriving classes.
+#### Example of a class extending another class
+![example of a class extending another class](/docs/extends-classes-diagram.png)
+```js
+class Person{
+    constructor(personName, personAge, gender){
+        this.personName = personName;
+        this.personAge = personAge;
+        this.gender = gender;   
+    }
+ 
+    get personInfo(){
+        return (`The name of person is ${this.personName} of Age
+                ${this.personAge} and gender is ${this.gender}`);
+    }  
+}
+ 
+class Student extends Person{
+    constructor(personName, personAge, gender, standard, collegeName){
+       super(personName, personAge, gender);
+       this.standard = standard;
+       this.collegeName = collegeName;
+    }
+ 
+    get studentInfo(){
+        return (`The name of student is ${this.personName} and in
+               ${this.standard} from College ${this.collegeName}`);
+    }
+ 
+    get grade(){
+        return this._grade;
+    }
+ 
+    set grade(grade){
+        console.log("Inside the setter Function")
+        this._grade = grade;
+    }
+}
+```
+#### Example of using the `protected` access modified
+```js
+class Employee {
+    public empName: string;
+    protected empCode: number;
+
+    constructor(name: string, code: number){
+        this.empName = name;
+        this.empCode = code;
+    }
+}
+
+class SalesEmployee extends Employee{
+    private department: string;
+    
+    constructor(name: string, code: number, department: string) {
+        super(name, code);
+        this.department = department;
+    }
+}
+
+let emp = new SalesEmployee("John Smith", 123, "Sales");
+emp.empCode; //Compiler Error
+```
+- **static**: a static property is **shared among all instances** of a class
+```js
+class Employee {
+    static headcount: number = 0; // this value is the same for EVERY `Employee` class
+
+    constructor(
+        private firstName: string,
+        private lastName: string,
+        private jobTitle: string) {
+
+        Employee.headcount++;
+    }
+}
+```
