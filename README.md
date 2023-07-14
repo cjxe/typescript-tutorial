@@ -236,3 +236,26 @@ greet = (name: string, greeting: string) => {
 // ✅
 ```
 
+## Lesson 11
+TS doesn't know if the HTML element you are trying to get exists, so it can refer the return type as `null`. To overcome this and access **existing** the keys inside the object, you can append `!` suffix at the end of the variable
+```js
+const anchor = document.querySelector('a');
+
+console.log(anchor.href);
+
+// ❌ error TS18047: 'anchor' is possibly 'null'.
+```
+```js
+const anchor = document.querySelector('a')!;
+
+console.log(anchor.href);
+// ✅
+```
+sometimes TS can't detect the type of the element (i.e., when selecting an HTML by querying with a class name), so you can type cast the type `Element` to `HTMLFormElement` using the syntax  <variable> `as` <type>. This helps when using an IDE (i.e., autocomplete dropdown comes up)
+```js 
+// 🚨 look at the file `index.html` to understand what `querySelector` method is selecting
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+// ✅
+```
